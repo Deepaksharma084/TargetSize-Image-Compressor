@@ -100,34 +100,36 @@ const ImageCompressor = () => {
     : 0;
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4 md:p-8 font-sans text-slate-900">
+    <div className="min-h-screen bg-[#0d0e0f] p-4 md:p-8 font-sans text-slate-900">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <header className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-slate-800 flex items-center justify-center gap-2">
-            <ImageIcon className="text-blue-600" /> Professional Image Optimizer
+            <ImageIcon className="text-blue-600" /> TargetSize Image Compressor
           </h1>
           <p className="text-slate-500 mt-2">Browser-based. Private. Real-time.</p>
         </header>
 
         {!originalFile ? (
           /* Upload Zone */
-          <div className="border-2 border-dashed border-blue-200 bg-blue-50 rounded-2xl p-12 text-center hover:border-blue-400 transition-colors cursor-pointer relative">
+          <div className="border-2 border-dashed border-[#2a2d2f] bg-[#161819] rounded-2xl p-12 text-center hover:border-[#3a3d3f] transition-colors cursor-pointer relative">
             <input
               type="file"
               accept="image/jpeg,image/png,image/webp"
               onChange={handleUpload}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <Upload className="mx-auto mb-4 text-blue-500" size={48} />
-            <h3 className="text-lg font-semibold">Click or Drag & Drop</h3>
-            <p className="text-sm text-slate-500">Supports JPG, PNG, WebP (Max 10MB recommended)</p>
+            <Upload className="mx-auto mb-4 text-gray-400" size={48} />
+            <h3 className="text-lg font-semibold text-white">Click or Drag & Drop</h3>
+            <p className="text-sm text-gray-400">
+              Supports JPG, PNG, WebP (Max 10MB recommended)
+            </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
             {/* Controls Panel */}
-            <div className="lg:col-span-1 bg-white p-6 rounded-2xl shadow-sm border border-slate-200 h-fit">
+            <div className="lg:col-span-1 bg-[#131516] p-6 rounded-2xl shadow-sm border border-[#212d3a] h-fit">
               <div className="flex justify-between items-center mb-6">
                 <h2 className="font-bold text-lg">Target Size</h2>
                 <button
@@ -142,7 +144,7 @@ const ImageCompressor = () => {
               <div className="space-y-6">
                 <div>
                   <div className="flex justify-between mb-2">
-                    <span className="text-sm font-medium">{targetSizeKB} KB</span>
+                    <span className="text-sm text-slate-400 font-medium">{targetSizeKB} KB</span>
                     <span className="text-xs text-slate-400">Max: {compressionStats.originalSize} KB</span>
                   </div>
                   <input
@@ -151,7 +153,7 @@ const ImageCompressor = () => {
                     max={compressionStats.originalSize}
                     value={targetSizeKB}
                     onChange={(e) => setTargetSizeKB(parseInt(e.target.value))}
-                    className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+                    className="w-full h-2 bg-[#272c2e] rounded-lg appearance-none cursor-pointer accent-blue-600"
                   />
                 </div>
 
@@ -161,7 +163,7 @@ const ImageCompressor = () => {
                     <button
                       key={val}
                       onClick={() => setTargetSizeKB(Math.min(val, compressionStats.originalSize))}
-                      className="py-2 text-sm border border-slate-200 rounded-lg hover:bg-blue-50 hover:border-blue-200 transition-all"
+                      className="py-2 text-sm text-slate-300 border border-[#212d3a] rounded-lg bg-[#32383b] hover:bg-[#40474b] hover:border-[#526981] transition-all"
                     >
                       {val}KB
                     </button>
@@ -177,25 +179,25 @@ const ImageCompressor = () => {
                 )}
 
                 {/* Stats Card */}
-                <div className="bg-slate-50 rounded-xl p-4 space-y-3 border border-slate-100">
+                <div className="bg-[#161819] rounded-xl p-4 space-y-3 border border-[#212d3a]">
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-500">Original:</span>
-                    <span className="font-mono">{compressionStats.originalSize} KB</span>
+                    <span className="text-slate-400">Original:</span>
+                    <span className="font-mono text-red-400">{compressionStats.originalSize} KB</span>
                   </div>
 
                   <div>
-                    
+
                   </div>
-                
+
                   <div className="flex justify-between text-sm">
-                    <span className="text-slate-500">Compressed:</span>
+                    <span className="text-slate-400">Compressed:</span>
                     <span className={`font-mono font-bold ${isProcessing ? 'animate-pulse' : 'text-green-600'}`}>
                       {compressionStats.currentSize} KB
                     </span>
                   </div>
-                  <div className="pt-2 border-t border-slate-200 flex justify-between items-center">
+                  <div className="pt-2 border-t border-[#212d3a] flex justify-between items-center">
                     <span className="text-xs font-bold uppercase text-slate-400 tracking-wider">Reduction</span>
-                    <span className="bg-green-100 text-green-700 px-2 py-0.5 rounded text-sm font-bold">
+                    <span className="bg-green-200 text-green-700 px-2 py-0.5 rounded text-sm font-bold">
                       {reductionPercent > 0 ? reductionPercent : 0}%
                     </span>
                   </div>
@@ -204,7 +206,7 @@ const ImageCompressor = () => {
                 <button
                   disabled={isProcessing || !compressedFile}
                   onClick={handleDownload}
-                  className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-100"
+                  className="w-full py-3 bg-blue-600 text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
                 >
                   {isProcessing ? <Loader2 className="animate-spin" /> : <Download size={20} />}
                   Download Result
@@ -214,9 +216,9 @@ const ImageCompressor = () => {
 
             {/* Preview Panel */}
             <div className="lg:col-span-2 space-y-4">
-              <div className="bg-white p-2 rounded-2xl shadow-sm border border-slate-200 overflow-hidden relative min-h-100 flex flex-col">
-                <div className="flex border-b border-slate-100">
-                  <div className="px-4 py-2 text-xs font-bold text-slate-400 border-r border-slate-100 uppercase">Live Preview</div>
+              <div className="bg-[#131516] p-2 rounded-2xl shadow-sm border border-[#212d3a] overflow-hidden relative min-h-100 flex flex-col">
+                <div className="flex border-b border-[#212d3a]">
+                  <div className="px-4 py-2 text-xs font-bold text-slate-400 uppercase">Live Preview</div>
                   {isProcessing && (
                     <div className="px-4 py-2 text-xs font-bold text-blue-500 flex items-center gap-2">
                       <Loader2 size={12} className="animate-spin" /> Processing...
@@ -224,7 +226,7 @@ const ImageCompressor = () => {
                   )}
                 </div>
 
-                <div className="flex-1 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-slate-100 bg-slate-50">
+                <div className="flex-1 flex flex-col md:flex-row divide-y md:divide-y-0 md:divide-x divide-[#212d3a] bg-[#161819]">
                   {/* Original */}
                   <div className="flex-1 p-4 flex flex-col items-center">
                     <span className="text-[10px] uppercase font-bold text-slate-400 mb-2 tracking-widest">Original</span>
@@ -238,7 +240,7 @@ const ImageCompressor = () => {
                   </div>
 
                   {/* Compressed */}
-                  <div className="flex-1 p-4 flex flex-col items-center bg-white">
+                  <div className="flex-1 p-4 flex flex-col items-center bg-[#131516]">
                     <span className="text-[10px] uppercase font-bold text-blue-500 mb-2 tracking-widest">Compressed</span>
                     <div className="relative flex-1 flex items-center justify-center">
                       {previewUrls.compressed ? (
