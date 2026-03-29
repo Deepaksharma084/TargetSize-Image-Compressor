@@ -105,7 +105,7 @@ const ImageCompressor = () => {
         {/* Header */}
         <header className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-slate-800 flex items-center justify-center gap-2">
-            <ImageIcon className="text-blue-600" /> TargetSize Image Compressor
+           TargetSize Image Compressor
           </h1>
           <p className="text-slate-500 mt-2">Browser-based. Private. Real-time.</p>
         </header>
